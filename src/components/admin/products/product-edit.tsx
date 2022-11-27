@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IProduct } from "../interfaces/product";
+import { IProduct } from "../../../interfaces/product";
 import { useEffect } from "react";
-import { useAppDispatch } from "../app/hook";
+import { useAppDispatch } from "../../../app/hook";
 
 type Props = {};
 

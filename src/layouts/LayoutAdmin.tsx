@@ -27,7 +27,7 @@ const LayoutAdmin = (props: Props) => {
                             </NavLink>
                         </Menu.Item>
                         <Menu.Item>
-                            <NavLink to="/admin/products">
+                            <NavLink to="/admin/categorys">
                                 <NotificationOutlined /> Danh mục
                             </NavLink>
                         </Menu.Item>

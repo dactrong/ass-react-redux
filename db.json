@@ -1,39 +1,83 @@
 {
   "products": [
     {
-      "name": "Product D",
-      "price": "1231231",
-      "id": 6
+      "name": "222222222",
+      "price": 222222222,
+      "quantity": 222222,
+      "image": "22222222",
+      "desc": "22222222222",
+      "id": 18
     },
     {
-      "name": "12313",
-      "price": "123123",
-      "id": 7
+      "name": "1233333333",
+      "price": 333333333,
+      "quantity": 33333333,
+      "image": "33333333",
+      "desc": "333333333333",
+      "id": 20
     },
     {
-      "name": "Sản phẩm 1",
-      "price": "12000000",
-      "image": "https://snapshot.canon-asia.com/vn/article/viet/5-simple-ways-to-take-the-world-8217-s-best-photos",
-      "desc": "Không có gì\n",
-      "id": 8
+      "name": "12312",
+      "price": 31231,
+      "quantity": 3123,
+      "image": "123123",
+      "desc": "123123",
+      "id": 21
     },
     {
-      "products": {
-        "name": "Sản phẩm 2",
-        "price": 10030000,
-        "quantity": 2,
-        "image": "https://snapshot.canon-asia.com/vn/article/viet/5-simple-ways-to-take-the-world-8217-s-best-photos",
-        "desc": "ngon bổ dẻ"
-      },
+      "name": "1231",
+      "price": 23123,
+      "quantity": 123123,
+      "image": "12312",
+      "desc": "3132123",
+      "id": 22
+    },
+    {
+      "name": "12312",
+      "price": 3123,
+      "quantity": 123123,
+      "image": "123",
+      "desc": "123123",
+      "id": 23
+    },
+    {
+      "name": "111111111",
+      "price": 1111111,
+      "quantity": 111111,
+      "image": "111",
+      "desc": "1111111",
+      "id": 24
+    },
+    {
+      "name": "123123",
+      "price": 1231,
+      "quantity": 23123,
+      "image": "123123",
+      "categoryId": 9,
+      "desc": "123123",
+      "id": 25
+    }
+  ],
+  "categorys": [
+    {
+      "name": "khoogn có gì",
+      "id": 9
+    },
+    {
+      "name": "ưerw",
+      "id": 10
+    },
+    {
+      "name": "qưeqwe",
       "id": 11
     },
     {
-      "name": "123123123",
-      "price": 123123,
-      "quantity": 12312,
-      "image": "123123",
-      "desc": "1231231",
+      "name": "qưeqwe",
       "id": 12
+    },
+    {
+      "name": "qưeqwe",
+      "id": 13
     }
   ]
 }
