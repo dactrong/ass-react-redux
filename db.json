@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "name": "Product D",
+      "price": "1231231",
+      "id": 6
+    },
+    {
+      "name": "12313",
+      "price": "123123",
+      "id": 7
+    },
+    {
+      "name": "Sản phẩm 1",
+      "price": "12000000",
+      "image": "https://snapshot.canon-asia.com/vn/article/viet/5-simple-ways-to-take-the-world-8217-s-best-photos",
+      "desc": "Không có gì\n",
+      "id": 8
+    },
+    {
+      "products": {
+        "name": "Sản phẩm 2",
+        "price": 10030000,
+        "quantity": 2,
+        "image": "https://snapshot.canon-asia.com/vn/article/viet/5-simple-ways-to-take-the-world-8217-s-best-photos",
+        "desc": "ngon bổ dẻ"
+      },
+      "id": 11
+    },
+    {
+      "name": "123123123",
+      "price": 123123,
+      "quantity": 12312,
+      "image": "123123",
+      "desc": "1231231",
+      "id": 12
+    }
+  ]
+}
