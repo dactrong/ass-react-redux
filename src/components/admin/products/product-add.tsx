@@ -9,20 +9,39 @@ import {
   InputNumber,
   message,
   Select,
+  Upload,
+  UploadFile,
+  UploadProps,
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useGetCategorysQuery } from "../../../services/categorys";
+import { RcFile } from "antd/es/upload";
+import { useState } from "react";
+import { uploadImage } from "../../../utils/upload";
+import Dragger from "antd/es/upload/Dragger";
 
 type Props = {};
 
 const ProductAdd = (props: Props) => {
   const { data: getCategory } = useGetCategorysQuery();
   const [addProduct, { isLoading }] = useAddProductMutation();
-  const navigate = useNavigate();
 
-  const onFinish: SubmitHandler<IProduct> = (data) => {
+  const navigate = useNavigate();
+  const onFinish: SubmitHandler<IProduct> = async (values) => {
+    console.log(values);
+    const imgLink = await uploadImage(fileList[0]);
+
+    const valueAdd = {
+      img: imgLink,
+      name: values.name,
+      price: values.price,
+      desc: values.desc,
+      quantity: values.quantity,
+      categoryId: values.categoryId,
+    };
+    
     try {
-      addProduct(data);
+      addProduct(valueAdd);
       message.success("Thêm thành công");
       navigate("/admin/products");
     } catch (error) {
@@ -41,6 +60,27 @@ const ProductAdd = (props: Props) => {
     number: {
       range: "${label} phải lớn hơn  ${min} ",
     },
+  };
+
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async (file: UploadFile) => {
+    let src = file.url as string;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj as RcFile);
+        reader.onload = () => resolve(reader.result as string);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
   };
   return (
     <div>
@@ -76,11 +116,23 @@ const ProductAdd = (props: Props) => {
           <InputNumber style={{ width: 1082.66 }} />
         </Form.Item>
         <Form.Item
-          name={["image"]}
-          label="Ảnh sản phẩm"
-          rules={[{ required: true }]}
+          name="image"
+          label="Ảnh"
+          rules={[{ required: true, message: "Hãy thêm 1 ảnh" }]}
         >
-          <Input />
+          <Dragger
+            listType="picture"
+            multiple={false}
+            maxCount={1}
+            beforeUpload={() => {
+              return false;
+            }}
+            onChange={onChange}
+            onPreview={onPreview}
+            fileList={fileList}
+          >
+            <p>Thêm ảnh!</p>
+          </Dragger>
         </Form.Item>
         <Form.Item
           name="categoryId"
@@ -90,17 +142,16 @@ const ProductAdd = (props: Props) => {
           ]}
         >
           <Select placeholder="Danh mục sản phẩm">
-            {getCategory && getCategory.map((item, index) => {
-              console.log(getCategory);
-              
-              return (
-                
+            {getCategory &&
+              getCategory.map((item, index) => {
+                console.log(getCategory);
+
+                return (
                   <Select.Option value={item.id} key={index}>
                     {item.name}
                   </Select.Option>
-               
-              );
-            })}
+                );
+              })}
           </Select>
         </Form.Item>
         <Form.Item name={["desc"]} label="Mô tả">

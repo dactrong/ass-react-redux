@@ -1,33 +1,183 @@
-import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IProduct } from "../../../interfaces/product";
-import { useEffect } from "react";
-import { useAppDispatch } from "../../../app/hook";
+import {
+  useAddProductMutation,
+  useEditProductMutation,
+  useGetProductQuery,
+} from "../../../services/product";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Select,
+  Upload,
+  UploadFile,
+  UploadProps,
+} from "antd";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetCategorysQuery } from "../../../services/categorys";
+import { RcFile } from "antd/es/upload";
+import { useState } from "react";
+import { uploadImage } from "../../../utils/upload";
+import Dragger from "antd/es/upload/Dragger";
 
 type Props = {};
 
 const ProductEdit = (props: Props) => {
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm<IProduct>();
-    const dispatch = useAppDispatch();
-    const { id } = useParams();
+  const { id } = useParams();
+  const [form] = Form.useForm();
+  const { data: getCategory } = useGetCategorysQuery();
+  const [addProduct, { isLoading }] = useAddProductMutation();
+  const { data: getProduct } = useGetProductQuery(id as any);
+  const [editProduct] = useEditProductMutation(id as any);
+  //   console.log(getProduct);
 
-    const onSubmit: SubmitHandler<IProduct> = (data) => {
-        //
+  form.setFieldsValue(getProduct);
+  const navigate = useNavigate();
+  const onFinish: SubmitHandler<IProduct> = async (values: IProduct) => {
+    const imgLink = await uploadImage(fileList[0]);
+    const valueAdd = {
+      id,
+      img: imgLink,
+      name: values.name,
+      price: values.price,
+      desc: values.desc,
+      quantity: values.quantity,
+      categoryId: values.categoryId,
     };
-   
-    return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register("name")} />
-                <input type="text" {...register("price")} />
-            </form>
-        </div>
-    );
+
+    try {
+      editProduct(valueAdd as IProduct);
+      message.success("Sửa thành công");
+      navigate("/admin/products");
+    } catch (error) {
+      message.error("Lỗi !");
+    }
+  };
+  const layout = {
+    labelCol: { span: 3 },
+    wrapperCol: { span: 16 },
+  };
+  const validateMessages = {
+    required: "${label} không được để trống!",
+    types: {
+      number: "${label} không phải là một con số hợp lệ!",
+    },
+    number: {
+      range: "${label} phải lớn hơn  ${min} ",
+    },
+  };
+
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async (file: UploadFile) => {
+    let src = file.url as string;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj as RcFile);
+        reader.onload = () => resolve(reader.result as string);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
+  return (
+    <div>
+      <Form
+        {...layout}
+        name="nest-messages"
+        onFinish={onFinish}
+        form={form}
+        validateMessages={validateMessages}
+      >
+        <Form.Item
+          name={["name"]}
+          label="Tên sản phẩm"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name={["price"]}
+          label="Giá sản phẩm"
+          rules={[
+            { required: true, type: "number", min: 0, max: 999999999999999999 },
+          ]}
+        >
+          <InputNumber style={{ width: 1082.66 }} />
+        </Form.Item>
+        <Form.Item
+          name={["quantity"]}
+          label="Số lượng"
+          rules={[
+            { required: true, type: "number", min: 0, max: 999999999999999999 },
+          ]}
+        >
+          <InputNumber style={{ width: 1082.66 }} />
+        </Form.Item>
+        <Form.Item
+          name="image"
+          label="Ảnh"
+          rules={[{ required: true, message: "Hãy thêm 1 ảnh" }]}
+        >
+          <Dragger
+            listType="picture"
+            multiple={false}
+            maxCount={1}
+            beforeUpload={() => {
+              return false;
+            }}
+            onChange={onChange}
+            onPreview={onPreview}
+            fileList={fileList}
+          >
+            <p>Thêm ảnh!</p>
+          </Dragger>
+        </Form.Item>
+        <Form.Item label="Ảnh" valuePropName="src" name="img">
+          <img width={200} />
+        </Form.Item>
+        <Form.Item
+          name="categoryId"
+          label="Danh mục"
+          rules={[
+            { required: true, message: "Vui lòng chọn danh mục sản phẩm" },
+          ]}
+        >
+          <Select placeholder="Danh mục sản phẩm">
+            {getCategory &&
+              getCategory.map((item, index) => {
+                console.log(getCategory);
+
+                return (
+                  <Select.Option value={item.id} key={index}>
+                    {item.name}
+                  </Select.Option>
+                );
+              })}
+          </Select>
+        </Form.Item>
+        <Form.Item name={["desc"]} label="Mô tả">
+          <Input.TextArea />
+        </Form.Item>
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
 };
 
 export default ProductEdit;

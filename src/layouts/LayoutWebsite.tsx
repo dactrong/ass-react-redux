@@ -1,16 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "./footer";
+import Header from "./header";
 
 type Props = {};
 
 const LayoutWebsite = (props: Props) => {
     return (
         <div>
-            <header>Header</header>
+            <Header></Header>
             <main>
                 <Outlet />
             </main>
-            <footer>Footer</footer>
+            <Footer></Footer>
         </div>
     );
 };

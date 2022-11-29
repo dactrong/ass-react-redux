@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGetProductsQuery, useRemoveProductMutation } from "../../../services/product";
-import { Button, Table, Popconfirm, message, Avatar } from "antd";
+import { Button, Table, Popconfirm, message, Avatar, Image } from "antd";
 import Column from "antd/es/table/Column";
 import { IProduct } from "../../../interfaces/product";
 
@@ -26,14 +26,23 @@ const Product = () => {
           name: item.name,
           price: item.price,
           quantity: item.quantity,
-          image: item.image,
+          img: item.img,
           desc: item.desc,
         }))}
       >
         <Column title="Tên sản phẩm" dataIndex="name" key="name" />
         <Column title="Giá sản phẩm" dataIndex="price" key="price" />
         <Column title="Số lượng" dataIndex="quantity" key="quantity" />
-        <Column title="Ảnh sản phẩm" dataIndex="image" key="image" />
+        <Column title="Ảnh sản phẩm" dataIndex="img" key="img" render={
+          (images) =>{
+          return(
+            <Image
+            width={100}
+            src={images}
+          />
+          )
+          }
+        } />
         <Column title="Mô tả" dataIndex="desc" key="desc" />
 
         <Column
@@ -41,6 +50,7 @@ const Product = () => {
           key="action"
           render={(product) => {
             return (
+              <>
               <Popconfirm
                 placement="top"
                 title="Bạn có muốn xóa không?"
@@ -52,6 +62,7 @@ const Product = () => {
                   Xóa
                 </Button>
               </Popconfirm>
+              <Link to ={`${product.key}/edit`}>Sửa</Link></>
             );
           }}
         ></Column>

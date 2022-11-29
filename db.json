@@ -1,68 +1,16 @@
 {
   "products": [
     {
-      "name": "222222222",
-      "price": 222222222,
-      "quantity": 222222,
-      "image": "22222222",
-      "desc": "22222222222",
-      "id": 18
-    },
-    {
-      "name": "1233333333",
-      "price": 333333333,
-      "quantity": 33333333,
-      "image": "33333333",
-      "desc": "333333333333",
-      "id": 20
-    },
-    {
-      "name": "12312",
-      "price": 31231,
-      "quantity": 3123,
-      "image": "123123",
-      "desc": "123123",
-      "id": 21
-    },
-    {
-      "name": "1231",
-      "price": 23123,
-      "quantity": 123123,
-      "image": "12312",
-      "desc": "3132123",
-      "id": 22
-    },
-    {
-      "name": "12312",
-      "price": 3123,
-      "quantity": 123123,
-      "image": "123",
-      "desc": "123123",
-      "id": 23
-    },
-    {
-      "name": "111111111",
-      "price": 1111111,
-      "quantity": 111111,
-      "image": "111",
-      "desc": "1111111",
-      "id": 24
-    },
-    {
+      "id": 26,
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669690352/oa2vb28r9dyxys2po0xx.jpg",
       "name": "123123",
-      "price": 1231,
-      "quantity": 23123,
-      "image": "123123",
-      "categoryId": 9,
-      "desc": "123123",
-      "id": 25
+      "price": 12313,
+      "desc": "123132",
+      "quantity": 123123,
+      "categoryId": 12
     }
   ],
   "categorys": [
-    {
-      "name": "khoogn có gì",
-      "id": 9
-    },
     {
       "name": "ưerw",
       "id": 10

@@ -1,8 +1,10 @@
 export interface IProduct {
     id?: number;
+    categoryId?:number,
     name: string;
     price: number,
     quantity: number,
-    image:string,
-    desc:string
+    img:string,
+    desc:string,
+    
 }
