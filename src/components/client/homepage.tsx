@@ -1,9 +1,13 @@
 import React from "react";
 import Banner from "../../layouts/banner";
+import { useGetProductsQuery } from "../../services/product";
 
 type Props = {};
 
 const HomePage = (props: Props) => {
+  const { data: listProduct, isLoading } = useGetProductsQuery();
+  console.log("list", listProduct);
+
   return (
     <div>
       <Banner></Banner>
@@ -18,46 +22,16 @@ const HomePage = (props: Props) => {
           </div>
           <div className="row">
             <div className="product_main">
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
-
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
-
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
-
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
-
-              <div className="project_box ">
-                <div className="dark_white_bg">
-                  <img src="/src/assets/images/tisat5.png" alt="#" />
-                </div>
-                <h3>Short Openwork Cardigan $120.00</h3>
-              </div>
+              {listProduct?.map((item, index) => {
+                return (
+                  <div className="project_box ">
+                    <div className="dark_white_bg">
+                      <img src={item?.img} alt="#" />
+                    </div>
+                    <h3>{item?.name}</h3>
+                  </div>
+                );
+              })}
 
               <div className="col-md-12">
                 <a className="read_more" href="#">

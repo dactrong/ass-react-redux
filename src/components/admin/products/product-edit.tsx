@@ -128,7 +128,7 @@ const ProductEdit = (props: Props) => {
         <Form.Item
           name="image"
           label="Ảnh"
-          rules={[{ required: true, message: "Hãy thêm 1 ảnh" }]}
+          // rules={[{ required: true, message: "Hãy thêm 1 ảnh" }]}
         >
           <Dragger
             listType="picture"

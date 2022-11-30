@@ -1,30 +1,62 @@
 {
   "products": [
     {
-      "id": 26,
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669690352/oa2vb28r9dyxys2po0xx.jpg",
-      "name": "123123",
-      "price": 12313,
-      "desc": "123132",
-      "quantity": 123123,
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669792784/e8zojwfwiob9siqhot5k.png",
+      "name": "Sản phẩm 2",
+      "price": 12312312,
+      "desc": "123123",
+      "quantity": 2,
+      "categoryId": 12,
+      "id": 28
+    },
+    {
+      "id": 29,
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793446/yapsgjcc0swdnqsaxyvb.png",
+      "name": "qqeweq",
+      "price": 123123,
+      "desc": "123123",
+      "quantity": 1222,
       "categoryId": 12
+    },
+    {
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793509/pcraqcgqlmxlmudhblgy.png",
+      "name": "Giày lười",
+      "price": 1200000,
+      "desc": "Giày đẹp",
+      "quantity": 2,
+      "categoryId": 13,
+      "id": 30
+    },
+    {
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793562/eibuavrc5u01cv8yaigj.png",
+      "name": "Giày thể thao",
+      "price": 2000000,
+      "desc": "1213123123",
+      "quantity": 2,
+      "categoryId": 13,
+      "id": 31
+    },
+    {
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793592/hbuwpwwapd7fuicympxg.png",
+      "name": "Giày đẹp",
+      "price": 10000,
+      "desc": "123123123",
+      "quantity": 2,
+      "categoryId": 11,
+      "id": 32
     }
   ],
   "categorys": [
     {
-      "name": "ưerw",
-      "id": 10
-    },
-    {
-      "name": "qưeqwe",
+      "name": "Quần",
       "id": 11
     },
     {
-      "name": "qưeqwe",
+      "name": "Áo",
       "id": 12
     },
     {
-      "name": "qưeqwe",
+      "name": "Phụ kiện",
       "id": 13
     }
   ]
