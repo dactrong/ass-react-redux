@@ -1,63 +1,84 @@
 {
+  "users": [
+    {
+      "email": "trong@gmail.com",
+      "password": "$2a$10$GSPV5MJfGHnMcHzHwRCcbOkoR//azfmK3aMV4X.OKF03G.EYiOuyq",
+      "username": "trong",
+      "id": 1,
+      "role": 1
+    },
+    {
+      "email": "kieu@gmail.com",
+      "password": "$2a$10$VlEYPJNJz3BcWZ90O1DmdeUZqeJD5pRDNorzwG2OE43ec295OGOJa",
+      "username": "trongnguyen",
+      "id": 2,
+      "role": 0
+    },
+    {
+      "email": "kieu1@gmail.com",
+      "password": "$2a$10$Q9jqZHq2fqiVByvadcKMdusRwPzAZrN08uyapea2f2tO0twEb0kXG",
+      "username": "kieu",
+      "id": 3
+    }
+  ],
   "products": [
     {
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669792784/e8zojwfwiob9siqhot5k.png",
-      "name": "Sản phẩm 2",
-      "price": 12312312,
-      "desc": "123123",
-      "quantity": 2,
-      "categoryId": 12,
-      "id": 28
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669888603/d4gmgxmms0ewtwjds41d.png",
+      "name": "Áo phông thời trang nam APH366",
+      "price": 120000,
+      "desc": "– Màu sắc: Đen\n– Chất liệu: Vải cao cấp\n– Kiểu dáng: Vitagen thời trang, phối màu cá tính\n– Đặc điểm: Chỉ thêu đẹp, tỉ mỉ\n– Sản phẩm có mặt tại tất cả các shop trên hệ thống.",
+      "quantity": 22,
+      "categoryId": 1,
+      "id": 1
     },
     {
-      "id": 29,
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793446/yapsgjcc0swdnqsaxyvb.png",
-      "name": "qqeweq",
-      "price": 123123,
-      "desc": "123123",
-      "quantity": 1222,
-      "categoryId": 12
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669888652/egou6k2euqbmsxc9ltoz.png",
+      "name": "Áo polo nam POH330",
+      "price": 120000,
+      "desc": "– Chất liệu: Pique sợi ngô\n– Dáng: Regular\n– Đặc tính: 66% Escocosy, 30% Sorona, 4% Spandex\n– Màu: đen, trắng, be",
+      "quantity": 23,
+      "categoryId": 1,
+      "id": 2
     },
     {
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793509/pcraqcgqlmxlmudhblgy.png",
-      "name": "Giày lười",
-      "price": 1200000,
-      "desc": "Giày đẹp",
-      "quantity": 2,
-      "categoryId": 13,
-      "id": 30
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669888745/ripmepufhg7n7yxsptsv.png",
+      "name": "Giày lười nam PH1023",
+      "price": 200000,
+      "desc": "- Chiều cao giày 3cm\n\n- Chất liệu vải Flyknit cao cấp\n\n- Chất liệu đế cao su đúc êm mềm, độ đàn hồi tốt, chống trơn trượt\n\n- Kiểu dáng giày thể thao nam cổ thấp\n\n- Màu sắc: Trắng - Xám - Đen\n\n- Size: 39 - 40- 41 - 42 -43\n\n- Xuất xứ: Việt Nam ",
+      "quantity": 12,
+      "categoryId": 3,
+      "id": 3
     },
     {
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793562/eibuavrc5u01cv8yaigj.png",
-      "name": "Giày thể thao",
-      "price": 2000000,
-      "desc": "1213123123",
-      "quantity": 2,
-      "categoryId": 13,
-      "id": 31
-    },
-    {
-      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669793592/hbuwpwwapd7fuicympxg.png",
-      "name": "Giày đẹp",
-      "price": 10000,
-      "desc": "123123123",
-      "quantity": 2,
-      "categoryId": 11,
-      "id": 32
+      "img": "http://res.cloudinary.com/dectee66b/image/upload/v1669888843/ojzriucn8acw0ldf5vli.png",
+      "name": "Kính Mắt PH234",
+      "price": 200000,
+      "desc": "P/No.\tOR2063L-2S\nLoại\tWellington\nNhãn hiệu\tOWNDAYS+\nGiới tính\t\nMEN\nWOMEN\nMiếng đệm mũi\tAsian fit\nChất liệu\tNhựa dẻo\nKích cỡ\t53□17－148○43.0Hướng dẫn ký hiệu kích cỡ",
+      "quantity": 22,
+      "categoryId": 4,
+      "id": 4
     }
   ],
   "categorys": [
     {
-      "name": "Quần",
-      "id": 11
-    },
-    {
       "name": "Áo",
-      "id": 12
+      "id": 1
     },
     {
-      "name": "Phụ kiện",
-      "id": 13
+      "name": "Quần",
+      "id": 2
+    },
+    {
+      "name": "Giày",
+      "id": 3
+    },
+    {
+      "name": "Phụ kiện ",
+      "id": 4
+    },
+    {
+      "name": "Mũ",
+      "id": 5
     }
   ]
 }

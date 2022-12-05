@@ -7,24 +7,19 @@ import {
 } from "../../../services/categorys";
 import { useNavigate, useParams } from "react-router-dom";
 
-type Props = {};
-
+type Props = {}
 const CategoryEdit = (props: Props) => {
   const [form] = Form.useForm();
-  const { id  } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-
   const { data: getCategory, isLoading } = useGetCategoryQuery(id as any);
   const [editCategory] = useEditCategorysMutation();
   form.setFieldsValue(getCategory);
-
   const onFinish = (value: ICategory) => {
     const data1 = {
-      name:value.name,
+      name: value.name,
       id,
     };
-    // console.log(data1,id);
-
     editCategory(data1)
       .then((result) => {
         message.success("Sửa thành công");
@@ -33,8 +28,6 @@ const CategoryEdit = (props: Props) => {
       .catch((err) => {
         message.error("Lỗi");
       });
-
-    
   };
   return (
     <div>

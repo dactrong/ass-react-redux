@@ -30,7 +30,6 @@ const ProductEdit = (props: Props) => {
   const { id } = useParams();
   const [form] = Form.useForm();
   const { data: getCategory } = useGetCategorysQuery();
-  const [addProduct, { isLoading }] = useAddProductMutation();
   const { data: getProduct } = useGetProductQuery(id as any);
   const [editProduct] = useEditProductMutation(id as any);
   //   console.log(getProduct);

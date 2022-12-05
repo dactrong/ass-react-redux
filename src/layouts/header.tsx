@@ -1,9 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 type Props = {};
 
 const Header = (props: Props) => {
+  const { cart } = useSelector((state: any) => state.cart);
+  const getTotalQuantity = () => {
+    let total = 0;
+    cart.forEach((item: { quantity: number }) => {
+      total += item.quantity;
+    });
+    return total;
+  };
+  const navigate = useNavigate();
+
+  const a = JSON.parse(localStorage.getItem("user") as string);
+  const handleClick = (event: React.MouseEvent<HTMLElement>, text: string) => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
   return (
     <div>
       <header>
@@ -52,25 +69,46 @@ const Header = (props: Props) => {
                   </ul>
                 </div>
                 <div className="col-md-4">
-                  <div className="se_fonr1">
-                    <form action="#">
-                      <div className="select-box">
-                        <label
-                          htmlFor="select-box1"
-                          className="label select-box1"
-                        >
-                          <span className="label-desc">English</span>{" "}
-                        </label>
-                        <select id="select-box1" className="select">
-                          <option value="Choice 1">English</option>
-                          <option value="Choice 1">Falkla</option>
-                          <option value="Choice 2">Germa</option>
-                          <option value="Choice 3">Neverl</option>
-                        </select>
-                      </div>
-                    </form>
-                    <span className="time_o"> Giờ làm việc: 8.00 - 22.00</span>
-                  </div>
+                  {a == null ? (
+                    <div className="se_fonr1">
+                      <Link to="/signup" className="time_o">
+                        {" "}
+                        Đăng ký
+                      </Link>
+                      <Link to="/signin" className="time_o">
+                        {" "}
+                        Đăng nhập
+                      </Link>
+                    </div>
+                  ) : (
+                    <div>
+                      {a.user.role == 1 ? (
+                        <div className="">
+                          <NavLink
+                            to="/admin"
+                            tabIndex={1}
+                            className="dropdown-item text-sm font-normal"
+                            role="menuitem"
+                          >
+                            <span style={{paddingRight:'20px'}} >Admin</span>
+                            <span >{a.user.email}</span>
+                          </NavLink>
+                        </div>
+                      ) : (
+                        <div> {a.user.email}</div>
+                      )}
+                      <button
+                        value="1"
+                        tabIndex={3}
+                        className="dropdown-item text-sm font-normal"
+                        role="menuitem"
+                        id="logout"
+                        onClick={(e) => handleClick(e, "clicked")}
+                      >
+                        Đăng xuất
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -82,26 +120,30 @@ const Header = (props: Props) => {
                   <ul className="conta_icon d_none1">
                     <li>
                       <a href="#">
-                        <img src="/src/assets/images/email.png" alt="#" /> demo@gmail.com
+                        <img src="/src/assets/images/email.png" alt="#" />{" "}
+                        demo@gmail.com
                       </a>{" "}
                     </li>
                   </ul>
                 </div>
                 <div className="col-md-4">
                   <a className="logo" href="#">
-                    <img src="/src/assets/images/logo.png" alt="#" />
+                    <img src="/src/assets/images/logo.png" />
                   </a>
                 </div>
                 <div className="col-md-4">
                   <ul className="right_icon d_none1">
                     <li>
                       <a href="#">
-                        <img src="/src/assets/images/shopping.png" alt="#" />
+                        <img
+                          src="/src/assets/images/shopping.png"
+                          alt="#"
+                          onClick={() => navigate("/cart")}
+                          id="cartIcon"
+                        />
+                        <span>{getTotalQuantity() || 0}</span>
                       </a>{" "}
                     </li>
-                    <a href="#" className="order">
-                      Order Now
-                    </a>
                   </ul>
                 </div>
               </div>
@@ -144,9 +186,9 @@ const Header = (props: Props) => {
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link" href="fashion.html">
+                          <Link className="nav-link" to="/products/detail">
                             Fashion
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
                           <a className="nav-link" href="news.html">
